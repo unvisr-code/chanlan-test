@@ -1,0 +1,544 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 배경 이미지 추가 부분 */
+body::before {
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 70%;
+    height: 60%;
+    background-image: url('/main.png'); /* 로컬 이미지 경로 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* 결과창에서는 배경 이미지 제거 */
+body.no-background::before {
+    display: none;
+}
+
+/* 로고 이미지 스타일 추가 */
+.progress-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.logo-image {
+    width: 130px;
+    height: auto;
+}
+
+.progress-container {
+    width: 80%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0%; 
+}
+
+.progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px; 
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    position: relative;
+    overflow: visible;
+    margin-right: 10px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #FF6384;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    z-index: 1;
+}
+
+/* Progress icon의 백그라운드 색을 하얀색으로 변경 */
+.progress-icon {
+    position: absolute;
+    top: -10px;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: left 0.3s ease;
+    z-index: 2;
+}
+
+.progress-text {
+    font-size: 1em;
+    color: #333;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.question-container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    top: 20%; 
+}
+
+.question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    font-weight: bold; 
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: fixed; 
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.option {
+    margin: 10px;
+    padding: 15px;
+    background: linear-gradient(to right, #FF6453, #FFDE1B);
+    color: white;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); 
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid white;
+}
+
+.option:hover {
+    background-color: #e55370;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    margin-top: -50px;
+}
+
+.result-container.show-content {
+    margin-top: 0;
+}
+
+.result-image {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.result-department {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result-text {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.description-text {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.show-button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #F2A0B0;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.show-button:hover {
+    background-color: #e8909e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 8px;
+    max-height: 60vh;
+    overflow-y: auto;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.list-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.list-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.list-item-content {
+    flex: 1;
+}
+
+.list-item-content h2 {
+    margin: 0 0 0px; 
+    color: #333;
+    display: inline-block;
+}
+
+.department-box {
+    display: inline-block;
+    background-color: #F2A0B0;
+    color: white;
+    padding: 0px 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.list-item-content p {
+    margin: 5px 0;
+    color: #666;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #F2A0B0;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #e8909e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.action-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.curriculum-bar-container {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-left: 20px;
+    position: relative;
+    width: 50%; 
+}
+
+.curriculum-bar {
+    height: 5px;
+    background-color: #F2A0B0;
+    width: 100%;
+    position: relative;
+    border-radius: 2.5px;
+}
+
+.month-point {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    color: #F2A0B0;
+    border: 1px solid #F2A0B0;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: -12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+    z-index: 1;
+}
+
+.month-detail {
+    display: none;
+    position: absolute;
+    top: 35px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 9999;
+}
+
+.month-point:hover .month-detail,
+.month-point:focus .month-detail {
+    display: block;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup-button {
+    background-color: #F2A0B0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.popup-button:hover {
+    background-color: #e8909e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.email-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.show-content {
+    margin-top: -80px;
+    transition: all 0.5s ease-in-out;
+}
+
+.notion-list {
+    margin-top: 20px;
+    transition: margin-top 0.5s ease-in-out;
+}
+
+.notion-list.show-content {
+    margin-top: 0;
+}
+
+.download-button {
+    background-color: #F2A0B0;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.download-button:hover {
+    background-color: #e8909e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.button-container > .download-button {
+    margin-left: 10px;
+}
+
+.all-departments-button {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+/* 반응형 스타일 */
+@media (min-width: 600px) {
+    .list-item {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .list-item img {
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+
+    .list-item-content {
+        text-align: left;
+    }
+
+    .list-item-content p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .list-item {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .list-item img {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        align-self: center;
+    }
+
+    .list-item-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .department-box {
+        margin-left: 5px;
+    }
+
+    .curriculum-bar-container {
+        width: 50%;
+        margin-left: 10px;
+    }
+
+    .curriculum-bar {
+        width: 100%;
+    }
+
+    .month-point {
+        width: 25px;
+        height: 25px;
+        top: -10px;
+        font-size: 10px;
+    }
+
+    .popup {
+        width: 90%;
+    }
+
+    .list-item-content h2 {
+        font-size: 14px;
+    }
+
+    .list-item-content p {
+        font-size: 12px;
+    }
+
+    .department-box {
+        font-size: 12px;
+    }
+
+    .month-point {
+        font-size: 10px;
+    }
+}
