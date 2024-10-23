@@ -1,2 +1,84 @@
-this is test
-test
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공약 테스트잇</title>
+    <meta name="description" content="세종대학교 총학생회 선거운동본부">
+    <link rel="icon" href="/favicon.ico">
+    <!-- <link rel="stylesheet" href="/landing.css"> -->
+    <style>
+        @font-face {
+    font-family: 'CustomFont'; /* 폰트 이름을 정의 */
+    src: url('/fonts/PretendardVariable.woff2') format('woff2'), /* 로컬 폰트 파일 경로 */
+         url('/fonts/PretendardVariable.woff2') format('woff'); /* 백업 폰트 */
+    font-weight: normal; /* 선택 사항 */
+    font-style: normal; /* 선택 사항 */
+}
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 340px;
+            height: 100vh;
+            background: url('/logo.png') no-repeat center center;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            transition: transform 1s ease-in-out;
+        }
+
+        .button {
+            background: linear-gradient(to right, #FF6453, #FFDE1B);
+            border: 1px solid white;
+            border-radius: 50px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            max-width: 300px;
+            position: absolute;
+            bottom: 250px; /* 버튼을 하단에 배치 */
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* drop-shadow 적용 */
+            font-family: customFont;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <button class="button" id="findClubButton">공약 테스트잇 시작하기 !</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const findClubButton = document.getElementById('findClubButton');
+            const container = document.getElementById('container');
+
+            findClubButton.addEventListener('click', () => {
+                container.style.transform = 'translateY(-100vh)';
+
+                setTimeout(() => {
+                    window.location.href = '/questions/Q.html';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
