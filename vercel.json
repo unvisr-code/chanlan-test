@@ -1,12 +1,13 @@
 {
-    "routes": [
-      { "src": "/[^.]+", "dest": "/landing.html", "status": 200 }
-    ],
     "rewrites": [
-      { "source": "/", "destination": "/landing.html" },
-      { "source": "/questions", "destination": "/questions/Q.html" }
-    ],
-    "cleanUrls": true,
-    "trailingSlash": false
+      {
+        "source": "/questions",
+        "destination": "/questions/Q.html"
+      },
+      {
+        "source": "/index",
+        "destination": "/index.html"
+      }
+    ]
   }
   
