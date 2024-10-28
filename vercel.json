@@ -4,12 +4,6 @@
       { "source": "/questions", "destination": "/questions/Q.html" }
     ],
     "cleanUrls": true,
-    "trailingSlash": false,
-    "builds": [
-      {
-        "src": "landing.html",
-        "use": "@vercel/static"
-      }
-    ]
+    "trailingSlash": false
   }
   
