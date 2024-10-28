@@ -67,7 +67,7 @@
         .speech-bubble::after {
             content: '';
             position: absolute;
-            top: -10px; /* Adjusts the arrow to be at the top */
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;
@@ -116,15 +116,15 @@
             <div class="bubble-title">공약 테스트잇을 해보세요!</div>
             <div class="bubble-description">학우분께 필요한 공약을 추천드릴게요</div>
         </div>
-        <button class="button" id="findClubButton">공약 테스트잇 시작하기 !</button>
+        <button class="button" id="button">공약 테스트잇 시작하기 !</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const findClubButton = document.getElementById('findClubButton');
+            const button = document.getElementById('button');
             const container = document.getElementById('container');
 
-            findClubButton.addEventListener('click', () => {
+            button.addEventListener('click', () => {
                 container.style.transform = 'translateY(-100vh)';
 
                 setTimeout(() => {
