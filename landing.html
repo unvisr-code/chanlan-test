@@ -6,15 +6,14 @@
     <title>공약 테스트잇</title>
     <meta name="description" content="세종대학교 총학생회 선거운동본부">
     <link rel="icon" href="/favicon.ico">
-    <!-- <link rel="stylesheet" href="/landing.css"> -->
     <style>
         @font-face {
-    font-family: 'CustomFont'; /* 폰트 이름을 정의 */
-    src: url('/fonts/PretendardVariable.woff2') format('woff2'), /* 로컬 폰트 파일 경로 */
-         url('/fonts/PretendardVariable.woff2') format('woff'); /* 백업 폰트 */
-    font-weight: normal; /* 선택 사항 */
-    font-style: normal; /* 선택 사항 */
-}
+            font-family: 'CustomFont';
+            src: url('/fonts/PretendardVariable.woff2') format('woff2'), 
+                 url('/fonts/PretendardVariable.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
         body {
             margin: 0;
@@ -30,15 +29,64 @@
         .container {
             width: 340px;
             height: 50vh;
-            background: url('/main.png') no-repeat center center;
-            background-size: contain;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
             color: white;
             text-align: center;
             transition: transform 1s ease-in-out;
+            position: relative;
+            top: -10%;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .speech-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            gap: 16px;
+            width: 250px;
+            height: 63px;
+            background: #FF936E;
+            border-radius: 12px;
+            color: #FFFFFF;
+            box-shadow: 0px 6px 10px rgba(0, 114, 174, 0.33);
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        /* Speech bubble arrow at the top */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: -10px; /* Adjusts the arrow to be at the top */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #FF936E;
+        }
+
+        .bubble-title {
+            font-weight: 800;
+            font-size: 15px;
+            line-height: 18px;
+        }
+
+        .bubble-description {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 17px;
         }
 
         .button {
@@ -53,16 +101,21 @@
             cursor: pointer;
             max-width: 300px;
             position: absolute;
-            bottom: 250px; /* 버튼을 하단에 배치 */
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* drop-shadow 적용 */
-            font-family: customFont;
+            bottom: -150px;
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
+            font-family: 'CustomFont';
+            font-weight: bold;
         }
-
 
     </style>
 </head>
 <body>
     <div class="container" id="container">
+        <img src="/main.png" alt="Logo" class="logo">
+        <div class="speech-bubble">
+            <div class="bubble-title">공약 테스트잇을 해보세요!</div>
+            <div class="bubble-description">학우분께 필요한 공약을 추천드릴게요</div>
+        </div>
         <button class="button" id="findClubButton">공약 테스트잇 시작하기 !</button>
     </div>
 
