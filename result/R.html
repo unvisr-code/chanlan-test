@@ -18,7 +18,7 @@
         
         <div class="options">
             <div class="slider-container">
-                <div class="slider-placeholder">밀어서 잠금해제</div>
+                <div class="slider-placeholder">밀어서 마스코트 알아보기</div>
                 <div id="slider" class="slider">
                     <img src="/logo.png" alt="로고" class="logo-image">
                 </div>
@@ -31,6 +31,14 @@
     <div class="result-container center-content">
         <div class="result-image"></div>
         <div class="result-department">결과 학과가 여기에 표시됩니다.</div>
+    </div>
+
+    <!-- 바텀시트 -->
+    <div id="bottomSheet" class="bottom-sheet hidden">
+        <button class="close-button" onclick="closeBottomSheet()">닫기</button>
+        <div class="bottom-sheet-content">
+            <!-- 바텀시트에 콘텐츠가 없으므로 공란 유지 -->
+        </div>
     </div>
 
     <div id="notionList" class="container" style="display: none;"></div>

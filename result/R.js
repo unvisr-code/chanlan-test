@@ -1,10 +1,9 @@
-// R.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const resultImage = document.querySelector(".result-image");
     const resultTitle = document.querySelector(".question");
     const resultDescription = document.querySelector(".sub-question");
 
+    // localStorage에서 topCategory 가져오기
     const topCategory = localStorage.getItem("topCategory");
 
     const categoryMap = {
@@ -30,6 +29,60 @@ document.addEventListener("DOMContentLoaded", () => {
 const slider = document.getElementById("slider");
 const lockMessage = document.getElementById("lockMessage");
 let isDragging = false;
+
+slider.addEventListener("mousedown", (e) => {
+    isDragging = true;
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+        const container = slider.parentElement;
+        const containerRect = container.getBoundingClientRect();
+        const sliderRect = slider.getBoundingClientRect();
+        let newLeft = e.clientX - containerRect.left - sliderRect.width / 2;
+
+        if (newLeft < 0) newLeft = 0;
+        if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
+
+        slider.style.left = `${newLeft}px`;
+
+        if (newLeft >= containerRect.width - sliderRect.width) {
+            unlock();
+        }
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    if (isDragging) {
+        slider.style.left = "0px";
+    }
+    isDragging = false;
+});
+
+function unlock() {
+    slider.style.backgroundColor = "#76C7C0";
+    lockMessage.style.display = "block";
+    isDragging = false;
+
+    openBottomSheet();
+}
+
+// 바텀시트 열기 함수
+function openBottomSheet() {
+    document.getElementById("bottomSheet").classList.add("show");
+    document.getElementById("bottomSheet").classList.remove("hidden");
+    // document.querySelector(".result-image").classList.add("hidden"); // result-image만 숨김
+    document.querySelector(".option").classList.add("hidden");
+}
+
+// 바텀시트 닫기 함수
+function closeBottomSheet() {
+    document.getElementById("bottomSheet").classList.remove("show");
+    document.getElementById("bottomSheet").classList.add("hidden");
+    document.querySelector(".result-image").classList.remove("hidden"); // result-image 표시
+    document.querySelector(".option").classList.remove("hidden");
+}
+
 
 // 마우스 및 터치 이벤트 설정
 slider.addEventListener("mousedown", startDragging);
@@ -71,17 +124,6 @@ function stopDragging() {
         }
     }
     isDragging = false;
-}
-
-function unlock() {
-    slider.style.backgroundColor = "#76C7C0";
-    lockMessage.style.display = "block";
-    isDragging = false;
-
-    slider.removeEventListener("mousedown", startDragging);
-    slider.removeEventListener("touchstart", startDragging);
-    document.removeEventListener("mousemove", onDragging);
-    document.removeEventListener("touchmove", onDragging);
 }
 
 // "모든 마스코트 보기" 버튼 이벤트

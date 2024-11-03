@@ -1,3 +1,4 @@
+/* 전체 페이지 스타일 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -9,7 +10,8 @@ body {
     align-items: center;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden; /* 좌우 스크롤 방지 */
+    overflow-y: auto; /* 세로 스크롤만 허용 */
     background-image: url('/src/chanlan background.jpeg');
 }
 
@@ -185,7 +187,61 @@ body::before {
 .bottom {
     margin-top: 20px;
 }
+
 #slider {
     position: relative;
     /* 추가적인 스타일이 필요할 경우 여기에 추가 */
+}
+
+/* 바텀시트 스타일 */
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0%; /* 화면 중앙 기준으로 설정 */
+    transform: translateX(-50%); /* 중앙 정렬을 위한 이동 */
+    background-color: #f2a07c;
+    height: 50vh; /* 화면의 30% 높이 */
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%); /* 숨김 상태 */
+    overflow-y: auto; /* 세로 스크롤 가능 */
+    z-index: 1000;
+    width: 80%; /* question-container와 동일한 너비 */
+    max-width: 600px; /* 모바일 화면에 맞게 최대 너비 설정 */
+}
+
+.bottom-sheet-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 가운데 정렬 */
+}
+
+
+.bottom-sheet.show {
+    transform: translateY(0); /* 보여주는 상태 */
+}
+
+.hidden {
+    display: none;
+}
+
+.close-button {
+    background-color: #FF6453; /* 버튼 색상 */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px; /* 위쪽 간격 추가 */
+    width: fit-content; /* 버튼 너비 자동 조정 */
+}
+.close-button:hover {
+    background-color: #e05548; /* 호버 색상 */
 }
