@@ -141,10 +141,15 @@ function determineCategory() {
     // 4.5초 후에 팝업을 제거하고 결과 페이지로 이동
     setTimeout(() => {
         document.body.removeChild(popup); // 팝업 제거
-        displayResults(topCategory); // 결과 표시
+
+        // 최고 카테고리를 localStorage에 저장
+        localStorage.setItem("topCategory", topCategory);
+
+        // 결과 페이지로 이동
         window.location.href = "/result/R.html"; // 결과 페이지로 이동
     }, 4500); // 4.5초 지연
 }
+
 
 // 이미지 순차 애니메이션 함수
 function startLoadingImages() {

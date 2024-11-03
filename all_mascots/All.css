@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 위-아래 공간 분리 */
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: url('/src/chanlan background.jpeg');
+    background-size: cover;
+}
+
+.mascot-container {
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+    flex-grow: 1;
+    position: relative; /* 추가 */
+}
+
+.mascot-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.logo-image {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.mascot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 모바일 환경에서 2열 */
+    gap: 0px; /* 간격 조정 */
+    justify-items: center;
+    max-width: 800px;
+}
+
+.mascot-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mascot-item img {
+    width: 140px;
+    height: auto; /* 이미지 비율 유지 */
+    margin-bottom: 5px; /* 이미지와 이름 간격 줄임 */
+}
+
+.mascot-item p {
+    font-size: 0.8em; /* 폰트 크기 조정 */
+    margin: 0;
+}
+
+.footer-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9em;
+    color: #cfcfcf;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    white-space: nowrap; /* 한 줄로 표시 */
+}
+
+/* 큰 화면에서는 3열로 조정 */
+@media (min-width: 768px) {
+    .mascot-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 마지막 마스코트 가운데 정렬 */
+.mascot-grid .mascot-item:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f2a07c;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.popup-content h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.popup-content p {
+    font-size: 0.9em;
+    margin: 0 0 15px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.popup-buttons button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.popup-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모든 마스코트 보기</title>
+    <link rel="stylesheet" href="All.css">
+</head>
+<body>
+    <div class="mascot-container">
+        <div class="mascot-header">
+            <img src="/logo.png" alt="로고" class="logo-image">
+        </div>
+
+        <div class="mascot-grid">
+            <div class="mascot-item" data-type="work">
+                <img src="/src/facilities.png" alt="work 찬란이">
+                <p>work 찬란이</p>
+            </div>
+            <div class="mascot-item" data-type="education">
+                <img src="/src/Education.png" alt="education 찬란이">
+                <p>education 찬란이</p>
+            </div>
+            <div class="mascot-item" data-type="culture">
+                <img src="/src/Culture.png" alt="culture 찬란이">
+                <p>culture 찬란이</p>
+            </div>
+            <div class="mascot-item" data-type="communication">
+                <img src="/src/welfare.png" alt="communication 찬란이">
+                <p>communication 찬란이</p>
+            </div>
+            <div class="mascot-item" data-type="welfare">
+                <img src="/src/welfare.png" alt="welfare 찬란이">
+                <p>welfare 찬란이</p>
+            </div>
+            <div class="mascot-item" data-type="place">
+                <img src="/src/facilities.png" alt="place 찬란이">
+                <p>place 찬란이</p>
+            </div>
+            <div class="mascot-item last-mascot" data-type="law">
+                <img src="/src/Employment.png" alt="law 찬란이">
+                <p>law 찬란이</p>
+            </div>
+        </div>
+
+        <!-- 팝업 영역 -->
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <h2 id="popup-title">education 찬란이</h2>
+                <p id="popup-description">모르는거? 나한테 물어봐! 누구보다 가르치는걸 좋아하는 찬란이 입니다.</p>
+                <div class="popup-buttons">
+                    <button onclick="closePopup()">닫기</button>
+                    <button>공약 보기</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="footer-text">제38대 총학생회 선거운동본부 기호 1번 찬란</p>
+    </div>
+
+    <script src="All.js"></script>
+</body>
+</html>
