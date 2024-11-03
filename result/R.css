@@ -185,3 +185,7 @@ body::before {
 .bottom {
     margin-top: 20px;
 }
+#slider {
+    position: relative;
+    /* 추가적인 스타일이 필요할 경우 여기에 추가 */
+}

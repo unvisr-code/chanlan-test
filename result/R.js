@@ -1,12 +1,11 @@
+// DOM 로드 후 실행
 document.addEventListener("DOMContentLoaded", () => {
     const resultImage = document.querySelector(".result-image");
     const resultTitle = document.querySelector(".question");
     const resultDescription = document.querySelector(".sub-question");
 
-    // localStorage에서 topCategory 가져오기
     const topCategory = localStorage.getItem("topCategory");
 
-    // 카테고리별 이미지 및 설명 설정
     const categoryMap = {
         "facilities": { title: "work 찬란이", image: "/src/facilities.png", description: "취업? 내가 시켜줄게! 특기가 취업인 찬란이 입니다!" },
         "policy": { title: "policy 찬란이", image: "/src/policy.png", description: "정책은 나한테 맡겨! 정책 전문가 찬란이입니다!" },
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "employment, education": { title: "employment 찬란이", image: "/src/Employment.png", description: "교육 및 취업 지원에 특화된 찬란이입니다!" }
     };
 
-    // topCategory가 존재하고 유효할 경우 해당 이미지 및 설명 설정
     if (topCategory && categoryMap[topCategory]) {
         const categoryData = categoryMap[topCategory];
         resultImage.style.backgroundImage = `url('${categoryData.image}')`;
@@ -56,7 +54,10 @@ document.addEventListener("mousemove", (e) => {
 
 document.addEventListener("mouseup", () => {
     if (isDragging) {
-        slider.style.left = "0px";
+        // 잠금이 풀렸을 때만 초기 위치로 돌아가지 않음
+        if (!lockMessage.style.display || lockMessage.style.display === "none") {
+            slider.style.left = "0px";
+        }
     }
     isDragging = false;
 });
@@ -65,8 +66,6 @@ function unlock() {
     slider.style.backgroundColor = "#76C7C0";
     lockMessage.style.display = "block";
     isDragging = false;
-
-    // 잠금 해제 후 추가 동작을 원한다면 이곳에 추가 코드 작성
 }
 
 // "모든 마스코트 보기" 버튼 이벤트
