@@ -356,6 +356,7 @@ button:hover {
     display: block;
 }
 
+/* 팝업 스타일 */
 .popup {
     position: fixed;
     top: 50%;
@@ -366,7 +367,27 @@ button:hover {
     border-radius: 8px;
     z-index: 9999;
     padding: 20px;
+    text-align: center;
 }
+
+/* 로딩 이미지 컨테이너 스타일 */
+.loading-images {
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 5px auto 0;
+    transition: opacity 0.5s ease; /* 페이드 전환 */
+}
+
+
+/* 이미지 페이드 인-아웃 애니메이션 */
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 
 .popup-content {
     text-align: center;
@@ -458,9 +479,27 @@ button:hover {
     width: 100%;
     text-align: center;
 }
+/* 로딩 스피너 스타일 */
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #FF6453; /* 스피너 색상 */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto 0; /* 텍스트와의 간격 조정 및 가운데 정렬 */
+    display: block;
+}
+
+/* 스피너 애니메이션 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 /* 반응형 스타일 */
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
     .list-item {
         flex-direction: row;
         justify-content: flex-start;
@@ -528,7 +567,7 @@ button:hover {
     }
 
     .popup {
-        width: 90%;
+        width: 80%;
     }
 
     .list-item-content h2 {
@@ -546,4 +585,4 @@ button:hover {
     .month-point {
         font-size: 10px;
     }
-}
+} */
