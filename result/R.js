@@ -1,4 +1,5 @@
-// DOM 로드 후 실행
+// R.js
+
 document.addEventListener("DOMContentLoaded", () => {
     const resultImage = document.querySelector(".result-image");
     const resultTitle = document.querySelector(".question");
@@ -30,42 +31,57 @@ const slider = document.getElementById("slider");
 const lockMessage = document.getElementById("lockMessage");
 let isDragging = false;
 
-slider.addEventListener("mousedown", (e) => {
+// 마우스 및 터치 이벤트 설정
+slider.addEventListener("mousedown", startDragging);
+slider.addEventListener("touchstart", startDragging, { passive: true });
+document.addEventListener("mousemove", onDragging);
+document.addEventListener("touchmove", onDragging, { passive: true });
+document.addEventListener("mouseup", stopDragging);
+document.addEventListener("touchend", stopDragging);
+
+function startDragging(e) {
     isDragging = true;
-});
+    slider.style.position = "relative";
+}
 
-document.addEventListener("mousemove", (e) => {
-    if (isDragging) {
-        const container = slider.parentElement;
-        const containerRect = container.getBoundingClientRect();
-        const sliderRect = slider.getBoundingClientRect();
-        let newLeft = e.clientX - containerRect.left - sliderRect.width / 2;
+function onDragging(e) {
+    if (!isDragging) return;
 
-        if (newLeft < 0) newLeft = 0;
-        if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
+    const container = slider.parentElement;
+    const containerRect = container.getBoundingClientRect();
+    const sliderRect = slider.getBoundingClientRect();
+    
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let newLeft = clientX - containerRect.left - sliderRect.width / 2;
 
-        slider.style.left = `${newLeft}px`;
+    if (newLeft < 0) newLeft = 0;
+    if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
 
-        if (newLeft >= containerRect.width - sliderRect.width) {
-            unlock();
-        }
+    slider.style.left = `${newLeft}px`;
+
+    if (newLeft >= containerRect.width - sliderRect.width) {
+        unlock();
     }
-});
+}
 
-document.addEventListener("mouseup", () => {
+function stopDragging() {
     if (isDragging) {
-        // 잠금이 풀렸을 때만 초기 위치로 돌아가지 않음
         if (!lockMessage.style.display || lockMessage.style.display === "none") {
             slider.style.left = "0px";
         }
     }
     isDragging = false;
-});
+}
 
 function unlock() {
     slider.style.backgroundColor = "#76C7C0";
     lockMessage.style.display = "block";
     isDragging = false;
+
+    slider.removeEventListener("mousedown", startDragging);
+    slider.removeEventListener("touchstart", startDragging);
+    document.removeEventListener("mousemove", onDragging);
+    document.removeEventListener("touchmove", onDragging);
 }
 
 // "모든 마스코트 보기" 버튼 이벤트
