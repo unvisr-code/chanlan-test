@@ -157,6 +157,8 @@ body::before {
     height: 80vh;
     text-align: center;
     margin-top: -250px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .result-image {
