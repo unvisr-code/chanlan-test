@@ -32,47 +32,71 @@ document.addEventListener("DOMContentLoaded", () => {
     ).join("");
 });
 
-// 슬라이더 잠금 해제 기능
+// 슬라이더 잠금 해제 기능 및 터치/드래그 설정
 const slider = document.getElementById("slider");
 const lockMessage = document.getElementById("lockMessage");
 let isDragging = false;
 
-slider.addEventListener("mousedown", (e) => {
+slider.addEventListener("mousedown", startDragging);
+slider.addEventListener("touchstart", startDragging, { passive: true });
+
+document.addEventListener("mousemove", onDragging);
+document.addEventListener("touchmove", onDragging, { passive: true });
+
+document.addEventListener("mouseup", stopDragging);
+document.addEventListener("touchend", stopDragging);
+
+function startDragging(e) {
     isDragging = true;
-});
+}
 
-document.addEventListener("mousemove", (e) => {
-    if (isDragging) {
-        const container = slider.parentElement;
-        const containerRect = container.getBoundingClientRect();
-        const sliderRect = slider.getBoundingClientRect();
-        let newLeft = e.clientX - containerRect.left - sliderRect.width / 2;
+function onDragging(e) {
+    if (!isDragging) return;
 
-        if (newLeft < 0) newLeft = 0;
-        if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const container = slider.parentElement;
+    const containerRect = container.getBoundingClientRect();
+    const sliderRect = slider.getBoundingClientRect();
+    let newLeft = clientX - containerRect.left - sliderRect.width / 2;
 
-        slider.style.left = `${newLeft}px`;
+    if (newLeft < 0) newLeft = 0;
+    if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
 
-        // 슬라이더가 텍스트를 지나면 해당 글자 숨김
-        const spans = document.querySelectorAll(".slider-placeholder span");
-        spans.forEach((span) => {
-            const spanRect = span.getBoundingClientRect();
-            span.style.opacity = newLeft > spanRect.left - containerRect.left ? "0" : "1";
-        });
+    slider.style.left = `${newLeft}px`;
 
-        if (newLeft >= containerRect.width - sliderRect.width) {
-            unlock();
+    // 슬라이더가 텍스트를 지나면 해당 글자를 즉시 숨김 처리
+    const spans = document.querySelectorAll(".slider-placeholder span");
+    spans.forEach((span) => {
+        const spanRect = span.getBoundingClientRect();
+        const sliderRightEdge = newLeft + sliderRect.width;
+
+        // 슬라이더의 오른쪽 가장자리가 각 글자의 왼쪽 가장자리를 지나면 글자를 즉시 숨김
+        if (sliderRightEdge > spanRect.left) {
+            span.style.opacity = "0";
+        } else {
+            span.style.opacity = "1";
         }
+    });
+
+    if (newLeft >= containerRect.width - sliderRect.width) {
+        unlock();
     }
-});
+}
 
-
-document.addEventListener("mouseup", () => {
+function stopDragging() {
     if (isDragging) {
+        // 슬라이더가 처음 위치로 돌아오면 모든 텍스트를 다시 표시
         slider.style.left = "0px";
+        resetTextOpacity();
+        isDragging = false;
     }
-    isDragging = false;
-});
+}
+
+function resetTextOpacity() {
+    document.querySelectorAll(".slider-placeholder span").forEach((span) => {
+        span.style.opacity = "1";
+    });
+}
 
 function unlock() {
     slider.style.backgroundColor = "#76C7C0";
@@ -91,57 +115,25 @@ function openBottomSheet() {
 
 // 바텀시트 닫기 함수
 function closeBottomSheet() {
-    document.getElementById("bottomSheet").classList.remove("show");
-    document.getElementById("bottomSheet").classList.add("hidden");
+    const bottomSheet = document.getElementById("bottomSheet");
 
-    // 슬라이더 초기화
+    // 닫기 애니메이션을 위해 'hide' 클래스를 추가하고 'show' 클래스를 제거
+    bottomSheet.classList.remove("show");
+    bottomSheet.classList.add("hide");
+
+    // 애니메이션 종료 후 'hidden' 클래스를 추가하여 완전히 숨기기
+    bottomSheet.addEventListener("animationend", () => {
+        bottomSheet.classList.add("hidden");
+        bottomSheet.classList.remove("hide");
+    }, { once: true });
+
+    // 슬라이더 및 텍스트 초기화
     slider.style.left = "0px";
-    slider.style.backgroundColor = ""; // 초기 배경색으로 복구
+    slider.style.backgroundColor = "";
     lockMessage.style.display = "none";
+    resetTextOpacity();
     isDragging = false;
     document.querySelector(".option").classList.remove("hidden");
-}
-
-// 마우스 및 터치 이벤트 설정
-slider.addEventListener("mousedown", startDragging);
-slider.addEventListener("touchstart", startDragging, { passive: true });
-document.addEventListener("mousemove", onDragging);
-document.addEventListener("touchmove", onDragging, { passive: true });
-document.addEventListener("mouseup", stopDragging);
-document.addEventListener("touchend", stopDragging);
-
-function startDragging(e) {
-    isDragging = true;
-    slider.style.position = "relative";
-}
-
-function onDragging(e) {
-    if (!isDragging) return;
-
-    const container = slider.parentElement;
-    const containerRect = container.getBoundingClientRect();
-    const sliderRect = slider.getBoundingClientRect();
-    
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    let newLeft = clientX - containerRect.left - sliderRect.width / 2;
-
-    if (newLeft < 0) newLeft = 0;
-    if (newLeft > containerRect.width - sliderRect.width) newLeft = containerRect.width - sliderRect.width;
-
-    slider.style.left = `${newLeft}px`;
-
-    if (newLeft >= containerRect.width - sliderRect.width) {
-        unlock();
-    }
-}
-
-function stopDragging() {
-    if (isDragging) {
-        if (!lockMessage.style.display || lockMessage.style.display === "none") {
-            slider.style.left = "0px";
-        }
-    }
-    isDragging = false;
 }
 
 // "모든 마스코트 보기" 버튼 이벤트
