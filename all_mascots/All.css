@@ -9,6 +9,7 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    overflow-y: auto;
     background-image: url('/src/chanlan background.jpeg');
     background-size: cover;
 }
