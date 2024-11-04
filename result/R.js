@@ -23,6 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
         resultTitle.innerText = "결과를 불러오는 데 문제가 발생했습니다.";
         resultDescription.innerText = "";
     }
+
+    // 슬라이더 텍스트 애니메이션을 위한 각 글자에 span 태그 추가
+    const sliderPlaceholder = document.querySelector(".slider-placeholder");
+    const text = "밀어서 마스코트 알아보기";
+    sliderPlaceholder.innerHTML = [...text].map(
+        (char, i) => `<span style="--i: ${i}">${char}</span>`
+    ).join("");
 });
 
 // 슬라이더 잠금 해제 기능
