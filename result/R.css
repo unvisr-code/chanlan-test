@@ -105,6 +105,19 @@ body::before {
     border: 1px solid white;
 }
 
+/* 슬라이더 그라데이션 애니메이션 */
+@keyframes glowText {
+    0% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        color: rgba(255, 255, 255, 1);
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
 .slider-placeholder {
     position: absolute;
     width: 100%;
@@ -248,4 +261,32 @@ body::before {
 }
 .close-button:hover {
     background-color: #e05548; /* 호버 색상 */
+}
+
+
+/* 바텀시트 애니메이션 */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.bottom-sheet.show {
+    animation: slideUp 0.3s forwards;
+}
+
+.bottom-sheet.hide {
+    animation: slideDown 0.3s forwards;
 }

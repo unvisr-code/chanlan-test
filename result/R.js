@@ -71,7 +71,6 @@ function unlock() {
 function openBottomSheet() {
     document.getElementById("bottomSheet").classList.add("show");
     document.getElementById("bottomSheet").classList.remove("hidden");
-    // document.querySelector(".result-image").classList.add("hidden"); // result-image만 숨김
     document.querySelector(".option").classList.add("hidden");
 }
 
@@ -79,10 +78,14 @@ function openBottomSheet() {
 function closeBottomSheet() {
     document.getElementById("bottomSheet").classList.remove("show");
     document.getElementById("bottomSheet").classList.add("hidden");
-    document.querySelector(".result-image").classList.remove("hidden"); // result-image 표시
+
+    // 슬라이더 초기화
+    slider.style.left = "0px";
+    slider.style.backgroundColor = ""; // 초기 배경색으로 복구
+    lockMessage.style.display = "none";
+    isDragging = false;
     document.querySelector(".option").classList.remove("hidden");
 }
-
 
 // 마우스 및 터치 이벤트 설정
 slider.addEventListener("mousedown", startDragging);
