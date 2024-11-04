@@ -122,17 +122,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const button = document.getElementById('button');
-            const container = document.getElementById('container');
+    const button = document.getElementById('button');
+    const container = document.getElementById('container');
 
-            button.addEventListener('click', () => {
-                container.style.transform = 'translateY(-100vh)';
+    button.addEventListener('click', () => {
+        container.style.transform = 'translateY(-100vh)';
+        button.style.transform = 'translateY(-100vh)'; // 버튼도 함께 이동
 
-                setTimeout(() => {
-                    window.location.href = '/questions';
-                }, 1000);
-            });
-        });
+        setTimeout(() => {
+            window.location.href = '/questions';
+        }, 1000);
+    });
+});
+
     </script>
 </body>
 </html>
