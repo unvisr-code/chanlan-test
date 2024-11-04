@@ -4,7 +4,7 @@ const questions = [{
     "options": [
         {"answer": "숙소", "weight": {"facilities": 1}},
         {"answer": "관광지 평점", "weight": {"policy": 1}},
-        {"answer": "즐길거리", "weight": {"culture": 1}},
+        {"answer": "즐길거리(음식)", "weight": {"culture": 1}},
         {"answer": "친구 의견", "weight": {"communication, welfare": 1}},
         {"answer": "안전", "weight": {"employment, education": 1}}
     ]
