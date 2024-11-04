@@ -115,7 +115,7 @@ body.no-background::before {
     width: 80%;
     max-width: 600px;
     position: relative;
-    top: 15%; 
+    top: 5%; 
 }
 
 .question {
