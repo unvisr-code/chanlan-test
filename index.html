@@ -101,11 +101,10 @@
             max-width: 300px;
             position: absolute;
             bottom: -200px;
-            /* filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); */
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             font-family: 'Spoqa Han Sans Neo';
             font-weight: bold;
-            transition: transform 1s ease-in-out; /* 이동 애니메이션 추가 */
+            transition: transform 1s ease-in-out;
         }
 
     </style>
@@ -114,8 +113,8 @@
     <div class="container" id="container">
         <img src="/main.png" alt="Logo" class="logo">
         <div class="speech-bubble">
-            <div class="bubble-title">공약 테스트잇을 해보세요!</div>
-            <div class="bubble-description">학우분께 필요한 공약을 추천해 드릴게요</div>
+            <div class="bubble-title" id="bubbleTitle"></div>
+            <div class="bubble-description" id="bubbleDescription"></div>
         </div>
         <div class="button" id="button">공약 테스트잇 시작하기 !</div>
     </div>
@@ -124,6 +123,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.getElementById('button');
             const container = document.getElementById('container');
+            const bubbleTitle = document.getElementById('bubbleTitle');
+            const bubbleDescription = document.getElementById('bubbleDescription');
+
+            // 브라우저 언어 설정 가져오기
+            const userLanguage = navigator.language || navigator.userLanguage; 
+            const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+
+            // 언어에 따른 콘텐츠 설정
+            if (lang === 'en') {
+                bubbleTitle.textContent = "Try the Pledge Test!";
+                bubbleDescription.textContent = "We will recommend Pledge that are needed for students.";
+                button.textContent = "Start the Pledge Test!";
+            } else {
+                bubbleTitle.textContent = "공약 테스트잇을 해보세요!";
+                bubbleDescription.textContent = "학우분께 필요한 공약을 추천해 드릴게요";
+                button.textContent = "공약 테스트잇 시작하기 !";
+            }
 
             button.addEventListener('click', () => {
                 container.style.transform = 'translateY(-100vh)';
