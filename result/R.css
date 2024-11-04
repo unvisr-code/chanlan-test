@@ -11,7 +11,7 @@ body {
     height: 100vh;
     position: relative;
     overflow-x: hidden; /* 좌우 스크롤 방지 */
-    overflow-y: auto; /* 세로 스크롤만 허용 */
+    overflow-y: hidden; /* 세로 스크롤 방지 */
     background-image: url('/src/chanlan background.jpeg');
 }
 
