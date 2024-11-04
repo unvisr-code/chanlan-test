@@ -95,7 +95,8 @@ body::before {
 
 .slider-container {
     position: relative;
-    width: 300px;
+    width: 90%;
+    max-width: 400px;
     height: 50px;
     border-radius: 25px;
     background-color: #ddd;
