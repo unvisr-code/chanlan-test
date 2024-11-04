@@ -35,7 +35,7 @@
             align-items: center;
             color: white;
             text-align: center;
-            transition: transform 1s ease-in-out;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
             position: relative;
             top: -20%;
         }
@@ -61,10 +61,8 @@
             font-family: Spoqa Han Sans Neo;
             font-size: 14px;
             position: relative;
-            /* margin-top: 10px; */
         }
 
-        /* Speech bubble arrow at the top */
         .speech-bubble::after {
             content: '';
             position: absolute;
@@ -106,6 +104,7 @@
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
             font-family: 'Spoqa Han Sans Neo';
             font-weight: bold;
+            transition: transform 1s ease-in-out; /* 이동 애니메이션 추가 */
         }
 
     </style>
@@ -122,20 +121,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('button');
-    const container = document.getElementById('container');
+            const button = document.getElementById('button');
+            const container = document.getElementById('container');
 
-    button.addEventListener('click', () => {
-        container.style.transform = 'translateY(-100vh)';
-        button.style.transform = 'translateY(-100vh)'; // 버튼도 함께 이동
+            button.addEventListener('click', () => {
+                container.style.transform = 'translateY(-100vh)';
+                container.style.opacity = '0'; // 컨테이너의 투명도 변경
 
-        setTimeout(() => {
-            window.location.href = '/questions';
-        }, 1000);
-    });
-});
-
+                setTimeout(() => {
+                    window.location.href = '/questions';
+                }, 1000);
+            });
+        });
     </script>
 </body>
 </html>
-
