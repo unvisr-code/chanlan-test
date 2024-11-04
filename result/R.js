@@ -53,11 +53,19 @@ document.addEventListener("mousemove", (e) => {
 
         slider.style.left = `${newLeft}px`;
 
+        // 슬라이더가 텍스트를 지나면 해당 글자 숨김
+        const spans = document.querySelectorAll(".slider-placeholder span");
+        spans.forEach((span) => {
+            const spanRect = span.getBoundingClientRect();
+            span.style.opacity = newLeft > spanRect.left - containerRect.left ? "0" : "1";
+        });
+
         if (newLeft >= containerRect.width - sliderRect.width) {
             unlock();
         }
     }
 });
+
 
 document.addEventListener("mouseup", () => {
     if (isDragging) {

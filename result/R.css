@@ -91,6 +91,7 @@ body::before {
     width: 80%;
     max-width: 400px;
     border: 1px solid white;
+    height: 20px;
 }
 
 .slider-container {
@@ -121,17 +122,28 @@ body::before {
 }
 
 .slider-placeholder span {
-    opacity: 0.8;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.5); /* 기본적으로 은은한 빛 */
-    animation: gradientText 2s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.2s);
+    opacity: 0.9;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4); /* 기본 은은한 빛 */
+    animation: gradientText 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.15s); /* 빠르고 자연스러운 순차 애니메이션 */
 }
 
 @keyframes gradientText {
-    0% { color: rgba(255, 255, 255, 0.7); } /* 시작을 더 어둡게 설정 */
-    50% { color: rgba(255, 255, 255, 1); }  /* 중간을 더 밝게 설정 */
-    100% { color: rgba(255, 255, 255, 0.7); } /* 끝을 더 어둡게 설정 */
+    0% {
+        color: rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        color: rgba(255, 255, 255, 1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.8); /* 중간에 가장 밝게 */
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3); /* 시작과 비슷한 밝기로 돌아감 */
+    }
 }
+
+
 
 .slider {
     position: absolute;
