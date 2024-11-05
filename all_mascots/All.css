@@ -40,6 +40,7 @@ body {
     gap: 0px; /* 간격 조정 */
     justify-items: center;
     max-width: 800px;
+    align-items: center;
 }
 
 .mascot-item {
@@ -136,5 +137,5 @@ body {
 
 .mascot-item[data-type="communication"] img {
     width: auto;
-    height: 160px;
+    height: 150px;
 }

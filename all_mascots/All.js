@@ -25,7 +25,7 @@ const mascotInfo = {
         description: "안전하고 편리한 장소를 책임지는 찬란이입니다."
     },
     "policy": {
-        title: "policy",
+        title: "policy 찬란이",
         description: "법과 규칙을 준수하며 정의로운 찬란이입니다."
     }
 };
@@ -35,11 +35,17 @@ function showPopup(type) {
     const popup = document.getElementById("popup");
     const titleElement = document.getElementById("popup-title");
     const descriptionElement = document.getElementById("popup-description");
+    const viewButton = document.querySelector(".popup-buttons button.view-button");
 
     // 선택된 마스코트 정보를 팝업에 설정
     const info = mascotInfo[type];
     titleElement.innerText = info.title;
     descriptionElement.innerText = info.description;
+
+    // "공약 보기" 버튼에 맞는 URL을 설정
+    viewButton.onclick = () => {
+        window.location.href = `https://chanlan-sejong.kr/${type}`;
+    };
 
     // 팝업 표시
     popup.classList.remove("hidden");
