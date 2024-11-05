@@ -106,6 +106,7 @@ function displayQuestion() {
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
 
+    questionElement.style.whiteSpace = "pre-wrap"; // 줄바꿈 처리
     questionElement.innerHTML = questions[currentQuestion].question;
     optionsElement.innerHTML = "";
 
@@ -119,6 +120,7 @@ function displayQuestion() {
 
     updateProgressBar(); // 진행 바 업데이트
 }
+
 
 // 카테고리 결정 및 결과 표시
 function determineCategory() {

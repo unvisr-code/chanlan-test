@@ -499,6 +499,10 @@ button:hover {
     100% { transform: rotate(360deg); }
 }
 
+#question {
+    white-space: pre-wrap;
+}
+
 
 /* 반응형 스타일 */
 /* @media (min-width: 600px) {
