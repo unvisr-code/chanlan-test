@@ -5,8 +5,8 @@ const questions = [{
         {"answer": "숙소", "weight": {"facilities": 1}},
         {"answer": "관광지 평점", "weight": {"policy": 1}},
         {"answer": "즐길거리(음식)", "weight": {"culture": 1}},
-        {"answer": "친구 의견", "weight": {"communication, welfare": 1}},
-        {"answer": "안전", "weight": {"employment, education": 1}}
+        {"answer": "친구 의견", "weight": {"communication": 1}},
+        {"answer": "안전", "weight": {"employment": 1}}
     ]
 },
 {
@@ -15,8 +15,8 @@ const questions = [{
         {"answer": "건축학과", "weight": {"facilities": 1}},
         {"answer": "정치외교학과", "weight": {"policy": 1}},
         {"answer": "레크레이션학과", "weight": {"culture": 1}},
-        {"answer": "미디어 커뮤니케이션학", "weight": {"communication, welfare": 1}},
-        {"answer": "교육학과", "weight": {"employment, education": 1}}
+        {"answer": "미디어 커뮤니케이션학", "weight": {"communication": 1}},
+        {"answer": "교육학과", "weight": {"education": 1}}
     ]
 },
 {
@@ -25,8 +25,8 @@ const questions = [{
         {"answer": "집 있는 애인", "weight": {"facilities": 1}},
         {"answer": "데이트 코스 짜오는 연인", "weight": {"policy": 1}},
         {"answer": "관심사가 잘 맞는 애인", "weight": {"culture": 1}},
-        {"answer": "대화가 잘 통하는 애인", "weight": {"communication, welfare": 1}},
-        {"answer": "취업한 애인", "weight": {"employment, education": 1}}
+        {"answer": "대화가 잘 통하는 애인", "weight": {"communication": 1}},
+        {"answer": "취업한 애인", "weight": {"employment": 1}}
     ]
 },
 {
@@ -35,8 +35,8 @@ const questions = [{
         {"answer": "건설공", "weight": {"facilities": 1}},
         {"answer": "정치인", "weight": {"policy": 1}},
         {"answer": "축제 MC", "weight": {"culture": 1}},
-        {"answer": "사회봉사자", "weight": {"communication, welfare": 1}},
-        {"answer": "교사", "weight": {"employment, education": 1}}
+        {"answer": "사회봉사자", "weight": {"welfare": 1}},
+        {"answer": "교사", "weight": {"education": 1}}
     ]
 },
 {
@@ -45,8 +45,8 @@ const questions = [{
         {"answer": "지하 캠퍼스", "weight": {"facilities": 1}},
         {"answer": "4년간 수강신청 올클", "weight": {"policy": 1}},
         {"answer": "잔디밭 세종대", "weight": {"culture": 1}},
-        {"answer": "친구 100명", "weight": {"communication, welfare": 1}},
-        {"answer": "전공교수님과 베프", "weight": {"employment, education": 1}}
+        {"answer": "친구 100명", "weight": {"communication": 1}},
+        {"answer": "전공교수님과 베프", "weight": {"education": 1}}
     ]
 },
 {
@@ -55,8 +55,8 @@ const questions = [{
         {"answer": "인테리어", "weight": {"facilities": 1}},
         {"answer": "가게 메뉴얼", "weight": {"policy": 1}},
         {"answer": "사람들의 메뉴 선호도", "weight": {"culture": 1}},
-        {"answer": "가게 SNS", "weight": {"communication, welfare": 1}},
-        {"answer": "알바생 뽑기", "weight": {"employment, education": 1}}
+        {"answer": "가게 SNS", "weight": {"communication": 1}},
+        {"answer": "알바생 뽑기", "weight": {"employment": 1}}
     ]
 }];
 
@@ -66,8 +66,10 @@ const scores = {
     "facilities": 0,
     "policy": 0,
     "culture": 0,
-    "communication, welfare": 0,
-    "employment, education": 0
+    "communication": 0,
+    "welfare": 0,
+    "employment": 0,
+    "education": 0
 };
 const totalQuestions = questions.length;
 
@@ -131,7 +133,7 @@ function determineCategory() {
     popup.className = "popup";
     popup.innerHTML = `
         <div class="popup-content">
-            <p>나에게 맞는 공약을\n 찾는중이에요!</p>
+            <p>나에게 맞는 공약을<br> 찾는중이에요!</p>
             <div class="loading-images"></div> <!-- 순차 이미지 애니메이션 -->
         </div>
     `;
@@ -157,26 +159,37 @@ function determineCategory() {
 function startLoadingImages() {
     const imageContainer = document.querySelector(".loading-images");
     const images = [
-        "/src/Culture.png",
-        "/src/Education.png",
-        "/src/Employment.png",
+        "/src/culture.png",
+        "/src/education.png",
+        "/src/employment.png",
         "/src/facilities.png",
         "/src/policy.png",
-        "/src/welfare.png"
+        "/src/welfare.png",
+        "/src/communication.png"
     ];
 
+    // 랜덤으로 3개의 이미지를 선택
+    const selectedImages = [];
+    while (selectedImages.length < 3) {
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        if (!selectedImages.includes(randomImage)) {
+            selectedImages.push(randomImage);
+        }
+    }
+
     let currentImageIndex = 0;
-    imageContainer.style.backgroundImage = `url(${images[currentImageIndex]})`;
+    imageContainer.style.backgroundImage = `url(${selectedImages[currentImageIndex]})`;
 
     setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
+        currentImageIndex = (currentImageIndex + 1) % selectedImages.length;
         imageContainer.style.opacity = "0"; // 페이드 아웃
         setTimeout(() => {
-            imageContainer.style.backgroundImage = `url(${images[currentImageIndex]})`;
+            imageContainer.style.backgroundImage = `url(${selectedImages[currentImageIndex]})`;
             imageContainer.style.opacity = "1"; // 페이드 인
         }, 300); // 0.3초 후 이미지 전환
     }, 1500); // 1.5초마다 이미지 전환
 }
+
 
 // 결과 표시 함수
 // 결과 표시 함수
@@ -190,9 +203,11 @@ function displayResults(category) {
     const categoryMap = {
         "facilities": "facilities.png",
         "policy": "policy.png",
-        "culture": "Culture.png",
-        "communication, welfare": "welfare.png",
-        "employment, education": "Employment.png"
+        "culture": "culture.png",
+        "communication": "communication.png",
+        "employment": "employment.png",
+        "welfare": "welfare.png",
+        "education": "education.png"
     };
 
     // 결과 이미지 설정
@@ -200,7 +215,7 @@ function displayResults(category) {
     resultImage.style.backgroundImage = `url('/src/${categoryMap[category]}')`;
 
     // 결과 텍스트 및 설명 추가
-    resultDepartment.innerHTML = `<div class="result-text">${category} 분과를 추천드려요!</div>`;
+    resultDepartment.innerHTML = `<div class="result-text">${category} 공약을 추천드려요!</div>`;
 }
 
 

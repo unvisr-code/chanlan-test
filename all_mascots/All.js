@@ -20,8 +20,8 @@ const mascotInfo = {
         title: "welfare 찬란이",
         description: "복지와 평등을 중요시하는 찬란이입니다."
     },
-    "place": {
-        title: "place 찬란이",
+    "facilities": {
+        title: "facilities 찬란이",
         description: "안전하고 편리한 장소를 책임지는 찬란이입니다."
     },
     "law": {

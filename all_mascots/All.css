@@ -133,3 +133,8 @@ body {
 .popup-buttons button:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+.mascot-item[data-type="communication"] img {
+    width: auto;
+    height: 160px;
+}

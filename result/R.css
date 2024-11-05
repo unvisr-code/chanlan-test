@@ -218,9 +218,9 @@ body::before {
     position: fixed;
     bottom: 0;
     transform: translateX(-50%);
-    background-color: #f2a07c;
+    background-color: #ffffff;
     height: 50vh;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     text-align: center;
@@ -229,7 +229,7 @@ body::before {
     transform: translateY(100%); /* 숨김 상태 */
     overflow-y: auto;
     z-index: 1000;
-    width: 80%;
+    width: 85%;
     max-width: 600px;
 }
 
@@ -259,15 +259,14 @@ body::before {
 }
 
 .close-button {
-    background-color: #FF6453;
+    background-color: #FF936E;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     text-align: center;
-    margin-top: 10px;
 }
 
 .close-button:hover {
