@@ -5,7 +5,7 @@ const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
 // 질문 목록
 const questions = [
     {
-        "question": lang === 'en' ? "What is important to you when traveling with friends?" : "친구와 여행할 때 중요하게 생각하는 것은?",
+        "question": lang === 'en' ? "What is important to you when traveling with friends?" : "친구와 여행할 때 중요하게\n생각하는 것은?",
         "options": [
             {"answer": lang === 'en' ? "Accommodation" : "숙소", "weight": {"facilities": 1}},
             {"answer": lang === 'en' ? "Tourist spot ratings" : "관광지 평점", "weight": {"policy": 1}},
@@ -15,7 +15,7 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "If I could double major, I would choose...?" : "내가 복전 할 수 있다면 하고 싶은 전공은?",
+        "question": lang === 'en' ? "If I could double major, I would choose...?" : "내가 복전 할 수 있다면\n하고 싶은 전공은?",
         "options": [
             {"answer": lang === 'en' ? "Architecture" : "건축학과", "weight": {"facilities": 2}},
             {"answer": lang === 'en' ? "Political Science" : "정치외교학과", "weight": {"policy": 2}},
@@ -45,7 +45,7 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "What do you hope will be realized in school life?" : "학교 생활 하면서 실현 됐으면 좋겠는 것은?",
+        "question": lang === 'en' ? "What do you hope will be realized in school life?" : "학교 생활 하면서 실현 됐으면\n좋겠는 것은?",
         "options": [
             {"answer": lang === 'en' ? "Underground campus" : "지하 캠퍼스", "weight": {"facilities": 4}},
             {"answer": lang === 'en' ? "Complete course registration" : "4년간 수강신청 올클", "weight": {"policy": 4}},
@@ -65,7 +65,7 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "In a team project, which role would you like to take?" : "팀플 할 때 내가 맞고 싶은 역할은?",
+        "question": lang === 'en' ? "In a team project, which role would you like to take?" : "팀플 할 때 내가\n맞고 싶은 역할은?",
         "options": [
             {"answer": lang === 'en' ? "Making PPT" : "ppt 제작", "weight": {"culture": 5}},
             {"answer": lang === 'en' ? "Presenting" : "발표", "weight": {"communication": 5}},
