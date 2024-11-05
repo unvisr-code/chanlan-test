@@ -64,3 +64,13 @@ document.querySelectorAll(".mascot-item").forEach((item) => {
         showPopup(type);
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tooltip = document.querySelector(".tooltip-message");
+    tooltip.classList.remove("hidden");
+
+    // 2초 후에 tooltip을 완전히 숨기기 위해 hidden 클래스를 다시 추가
+    setTimeout(() => {
+        tooltip.classList.add("hidden");
+    }, 2000); // fadeInOut 애니메이션 시간에 맞춰 2초 후에 숨김
+});

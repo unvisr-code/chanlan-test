@@ -40,6 +40,16 @@ const questions = [{
     ]
 },
 {
+    "question": "이중 한 명과 친해질 수 있다면?",
+    "options": [
+        {"answer": "건설공", "weight": {"facilities": 1}},
+        {"answer": "정치인", "weight": {"policy": 1}},
+        {"answer": "축제 MC", "weight": {"culture": 1}},
+        {"answer": "사회봉사자", "weight": {"welfare": 1}},
+        {"answer": "교사", "weight": {"education": 1}}
+    ]
+},
+{
     "question": "학교 생활 하면서 실현 됐으면\n 좋겠는 것은?",
     "options": [
         {"answer": "지하 캠퍼스", "weight": {"facilities": 1}},
@@ -83,10 +93,26 @@ displayQuestion();
 function updateProgressBar() {
     const progressBar = document.getElementById("progress-bar");
     const progressPercent = document.getElementById("progress-percent");
+    const progressIcon = document.getElementById("progress-icon");
 
-    const progressPercentage = (currentQuestion / totalQuestions) * 100; 
+    // 마지막 질문에서는 86%로 유지
+    const progressPercentage = (currentQuestion === totalQuestions - 1)
+        ? 86
+        : (currentQuestion / totalQuestions) * 100;
+
     progressBar.style.width = progressPercentage + '%';
     progressPercent.innerHTML = `${progressPercentage.toFixed(0)}%`;
+
+    // progress-icon의 위치 업데이트
+    progressIcon.style.left = `calc(${progressPercentage}% - 20px)`;
+}
+// 옵션 버튼을 비활성화하는 함수
+function disableOptions() {
+    const options = document.querySelectorAll(".option");
+    options.forEach(option => {
+        option.disabled = true; // 버튼 비활성화
+        option.style.cursor = "not-allowed"; // 비활성화 스타일
+    });
 }
 
 // 답변 처리 함수
@@ -96,10 +122,13 @@ function handleAnswer(weight) {
     }
     currentQuestion++;
 
-    if (currentQuestion < totalQuestions) {
-        displayQuestion();
+    // 모든 질문에 답변 완료 후 100%로 업데이트
+    if (currentQuestion === totalQuestions) {
+        updateProgressBar(); // 100%로 업데이트
+        disableOptions(); // 모든 옵션 비활성화
+        determineCategory();  // 결과 표시
     } else {
-        determineCategory();  // 모든 질문이 완료되면 결과 표시
+        displayQuestion();
     }
 }
 
@@ -122,6 +151,7 @@ function displayQuestion() {
 
     updateProgressBar(); // 진행 바 업데이트
 }
+
 
 
 // 카테고리 결정 및 결과 표시
