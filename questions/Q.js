@@ -17,7 +17,7 @@ const questions = [
     {
         "question": lang === 'en' ? "If I could double major,\n I would choose...?" : "내가 복전 할 수 있다면\n하고 싶은 전공은?",
         "options": [
-            {"answer": lang === 'en' ? "Architecture" : "건축학과", "weight": {"facilities": 2}},
+            {"answer": lang === 'en' ? "Architecture" : "해킹방어과", "weight": {"facilities": 2}},
             {"answer": lang === 'en' ? "Political Science" : "정치외교학과", "weight": {"policy": 2}},
                 {"answer": lang === 'en' ? "Media Communication" : "미디어커뮤니케이션학과", "weight": {"communication": 2}},
             {"answer": lang === 'en' ? "Education" : "교육학과", "weight": {"education": 1}},
