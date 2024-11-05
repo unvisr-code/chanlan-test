@@ -6,7 +6,7 @@ const mascotInfo = {
             en: "Employment Chanlan"
         },
         description: {
-            ko: "일을 사랑하고, 여러분의 취업을 응원하는 찬란이입니다.",
+            ko: "일을 사랑하고, 여러분의 취업을\n 응원하는 찬란이입니다.",
             en: "Passionate about work, here to support your career."
         }
     },
@@ -16,7 +16,7 @@ const mascotInfo = {
             en: "Education Chanlan"
         },
         description: {
-            ko: "모르는거? 나한테 물어봐! 누구보다 가르치는걸 좋아하는 찬란이 입니다.",
+            ko: "모르는거? 나한테 물어봐!\n 누구보다 가르치는걸 좋아하는 찬란이 입니다.",
             en: "Got questions? Ask me! I love teaching more than anyone."
         }
     },

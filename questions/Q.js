@@ -15,7 +15,7 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "If I could double major, I would choose...?" : "내가 복전 할 수 있다면\n하고 싶은 전공은?",
+        "question": lang === 'en' ? "If I could double major,\n I would choose...?" : "내가 복전 할 수 있다면\n하고 싶은 전공은?",
         "options": [
             {"answer": lang === 'en' ? "Architecture" : "건축학과", "weight": {"facilities": 2}},
             {"answer": lang === 'en' ? "Political Science" : "정치외교학과", "weight": {"policy": 2}},
@@ -25,13 +25,13 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "Who would you prefer to date?" : "이 중 한 명과 연애해야 한다면?",
+        "question": lang === 'en' ? "Who would you\n prefer to date?" : "이 중 한 명과 연애해야 한다면?",
         "options": [
             {"answer": lang === 'en' ? "Partner who plans dates" : "데이트 코스 짜오는 연인", "weight": {"policy": 3}},
             {"answer": lang === 'en' ? "Partner with similar interests" : "관심사가 잘 맞는 애인", "weight": {"culture": 2}},
             {"answer": lang === 'en' ? "Good communicator" : "대화가 잘 통하는 애인", "weight": {"communication": 3}},
             {"answer": lang === 'en' ? "Partner who takes initiative" : "솔선수범하는 애인", "weight": {"welfare": 1}},
-            {"answer": lang === 'en' ? "Partner with something to learn from" : "배울점 있는 애인", "weight": {"education": 2}}
+            {"answer": lang === 'en' ? "something to learn from" : "배울점 있는 애인", "weight": {"education": 2}}
         ]
     },
     {
