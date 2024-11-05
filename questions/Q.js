@@ -131,7 +131,7 @@ function determineCategory() {
     popup.className = "popup";
     popup.innerHTML = `
         <div class="popup-content">
-            <p>나에게 맞는 공약을 찾는중이에요!</p>
+            <p>나에게 맞는 공약을\n 찾는중이에요!</p>
             <div class="loading-images"></div> <!-- 순차 이미지 애니메이션 -->
         </div>
     `;
