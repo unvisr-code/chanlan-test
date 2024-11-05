@@ -1,7 +1,7 @@
 // 마스코트 정보를 정의합니다.
 const mascotInfo = {
-    "work": {
-        title: "work 찬란이",
+    "employment": {
+        title: "employment 찬란이",
         description: "일을 사랑하고, 여러분의 취업을 응원하는 찬란이입니다."
     },
     "education": {
