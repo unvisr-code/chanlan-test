@@ -6,12 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // localStorage에서 topCategory 가져오기
     const topCategory = localStorage.getItem("topCategory");
 
+    // 브라우저 언어 감지
+    const userLanguage = navigator.language || navigator.userLanguage;
+    const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+
+    // 카테고리 맵
     const categoryMap = {
-        "facilities": { title: "work 찬란이", image: "/src/facilities.png", description: "취업? 내가 시켜줄게! 특기가 취업인 찬란이 입니다!" },
-        "policy": { title: "policy 찬란이", image: "/src/policy.png", description: "정책은 나한테 맡겨! 정책 전문가 찬란이입니다!" },
-        "culture": { title: "culture 찬란이", image: "/src/Culture.png", description: "문화 예술 분야에 특화된 찬란이입니다!" },
-        "communication, welfare": { title: "communication 찬란이", image: "/src/welfare.png", description: "소통과 복지 전문가 찬란이입니다!" },
-        "employment, education": { title: "employment 찬란이", image: "/src/Employment.png", description: "교육 및 취업 지원에 특화된 찬란이입니다!" }
+        "facilities": {
+            title: lang === 'en' ? "Facilities Chanlan" : "work 찬란이",
+            image: "/src/facilities.png",
+            description: lang === 'en' ? "I specialize in facilities!" : "취업? 내가 시켜줄게! 특기가 취업인 찬란이 입니다!"
+        },
+        "policy": {
+            title: lang === 'en' ? "Policy Chanlan" : "policy 찬란이",
+            image: "/src/policy.png",
+            description: lang === 'en' ? "Leave the policies to me!" : "정책은 나한테 맡겨! 정책 전문가 찬란이입니다!"
+        },
+        "culture": {
+            title: lang === 'en' ? "Culture Chanlan" : "culture 찬란이",
+            image: "/src/Culture.png",
+            description: lang === 'en' ? "I’m specialized in culture and arts!" : "문화 예술 분야에 특화된 찬란이입니다!"
+        },
+        "communication": {
+            title: lang === 'en' ? "Communication Chanlan" : "소통 찬란이",
+            image: "/src/communication.png",
+            description: lang === 'en' ? "I excel in communication!" : "소통 전문가 찬란이입니다!"
+        },
+        "employment": {
+            title: lang === 'en' ? "Employment Chanlan" : "취업 찬란이",
+            image: "/src/Employment.png",
+            description: lang === 'en' ? "I specialize in employment support!" : "교육 및 취업 지원에 특화된 찬란이입니다!"
+        }
     };
 
     if (topCategory && categoryMap[topCategory]) {
@@ -20,13 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
         resultTitle.innerText = categoryData.title;
         resultDescription.innerText = categoryData.description;
     } else {
-        resultTitle.innerText = "결과를 불러오는 데 문제가 발생했습니다.";
+        resultTitle.innerText = lang === 'en' ? "There was a problem loading the results." : "결과를 불러오는 데 문제가 발생했습니다.";
         resultDescription.innerText = "";
     }
 
     // 슬라이더 텍스트 애니메이션을 위한 각 글자에 span 태그 추가
     const sliderPlaceholder = document.querySelector(".slider-placeholder");
-    const text = "밀어서 마스코트 알아보기";
+    const text = lang === 'en' ? "Swipe to learn more" : "밀어서 마스코트 알아보기";
     sliderPlaceholder.innerHTML = [...text].map(
         (char, i) => `<span style="--i: ${i}">${char}</span>`
     ).join("");
@@ -110,7 +135,12 @@ function unlock() {
 function openBottomSheet() {
     document.getElementById("bottomSheet").classList.add("show");
     document.getElementById("bottomSheet").classList.remove("hidden");
-    document.querySelector(".option").classList.add("hidden");
+    
+    // 언어에 따라 "모든 마스코트 보기" 버튼 텍스트 변경
+    const optionText = document.querySelector(".option");
+    const userLanguage = navigator.language || navigator.userLanguage;
+    const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+    optionText.textContent = lang === 'en' ? "View All Mascots" : "모든 마스코트 보기";
 }
 
 // 바텀시트 닫기 함수
@@ -133,8 +163,12 @@ function closeBottomSheet() {
     lockMessage.style.display = "none";
     resetTextOpacity();
     isDragging = false;
-    document.querySelector(".option").classList.remove("hidden");
 }
+
+// "닫기" 버튼 텍스트 변경
+const closeButton = document.querySelector(".close-button");
+const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+closeButton.textContent = lang === 'en' ? "Close" : "닫기";
 
 // "모든 마스코트 보기" 버튼 이벤트
 document.querySelector(".option").addEventListener("click", () => {
