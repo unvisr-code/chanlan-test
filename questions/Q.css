@@ -140,7 +140,7 @@ body.no-background::before {
 .option {
     /* margin: 10px; */
     margin-bottom: 10px;
-    padding: 15px;
+    padding: 10px;
     background: linear-gradient(to right, #FF6453, #FFDE1B);
     color: white;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); 
