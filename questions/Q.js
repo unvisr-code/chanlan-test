@@ -1,6 +1,6 @@
 // 질문 목록
 const questions = [{
-    "question": "친구와 여행할 때 중요하게 생각하는 것은?",
+    "question": "친구와 여행할 때 중요하게\n 생각하는 것은?",
     "options": [
         {"answer": "숙소", "weight": {"facilities": 1}},
         {"answer": "관광지 평점", "weight": {"policy": 1}},
@@ -10,7 +10,7 @@ const questions = [{
     ]
 },
 {
-    "question": "내가 복전 할 수 있다면 하고 싶은 전공은?",
+    "question": "내가 복전 할 수 있다면\n 하고 싶은 전공은?",
     "options": [
         {"answer": "건축학과", "weight": {"facilities": 1}},
         {"answer": "정치외교학과", "weight": {"policy": 1}},
@@ -40,7 +40,7 @@ const questions = [{
     ]
 },
 {
-    "question": "학교 생활 하면서 실현 됐으면 좋겠는 것은?",
+    "question": "학교 생활 하면서 실현 됐으면\n 좋겠는 것은?",
     "options": [
         {"answer": "지하 캠퍼스", "weight": {"facilities": 1}},
         {"answer": "4년간 수강신청 올클", "weight": {"policy": 1}},
@@ -50,7 +50,7 @@ const questions = [{
     ]
 },
 {
-    "question": "당신이 요식업 창업을 시작한다면 무엇을 가장 중요하게 생각할 것인가?",
+    "question": "당신이 요식업 창업을\n 시작한다면 무엇을 가장\n 중요하게 생각할 것인가?",
     "options": [
         {"answer": "인테리어", "weight": {"facilities": 1}},
         {"answer": "가게 메뉴얼", "weight": {"policy": 1}},
