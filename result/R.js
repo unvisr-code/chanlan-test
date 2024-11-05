@@ -55,6 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
     sliderPlaceholder.innerHTML = [...text].map(
         (char, i) => `<span style="--i: ${i}">${char}</span>`
     ).join("");
+
+    // "모든 마스코트 보기" 버튼 이벤트 리스너 추가
+    const optionButton = document.querySelector(".option");
+    optionButton.textContent = lang === 'en' ? "View All Mascots" : "모든 마스코트 보기";
+    optionButton.addEventListener("click", () => {
+        window.location.href = "/all_mascots/All.html";
+    });
 });
 
 // 슬라이더 잠금 해제 기능 및 터치/드래그 설정
@@ -135,11 +142,10 @@ function unlock() {
 function openBottomSheet() {
     document.getElementById("bottomSheet").classList.add("show");
     document.getElementById("bottomSheet").classList.remove("hidden");
-    
+
     // 언어에 따라 "모든 마스코트 보기" 버튼 텍스트 변경
     const optionText = document.querySelector(".option");
-    const userLanguage = navigator.language || navigator.userLanguage;
-    const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+    const lang = navigator.language.split('-')[0];
     optionText.textContent = lang === 'en' ? "View All Mascots" : "모든 마스코트 보기";
 }
 
@@ -167,10 +173,5 @@ function closeBottomSheet() {
 
 // "닫기" 버튼 텍스트 변경
 const closeButton = document.querySelector(".close-button");
-const lang = userLanguage.split('-')[0]; // "en" 또는 "ko"
+const lang = navigator.language.split('-')[0];
 closeButton.textContent = lang === 'en' ? "Close" : "닫기";
-
-// "모든 마스코트 보기" 버튼 이벤트
-document.querySelector(".option").addEventListener("click", () => {
-    window.location.href = "/all_mascots/All.html";
-});
