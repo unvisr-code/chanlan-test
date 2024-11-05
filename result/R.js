@@ -13,18 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // 카테고리 맵
     const categoryMap = {
         "facilities": {
-            title: lang === 'en' ? "Facilities Chanlan" : "work 찬란이",
+            title: lang === 'en' ? "Facilities Chanlan" : "시설 찬란이",
             image: "/src/facilities.png",
             description: lang === 'en' ? "I specialize in facilities!" : "취업? 내가 시켜줄게! 특기가 취업인 찬란이 입니다!"
         },
         "policy": {
-            title: lang === 'en' ? "Policy Chanlan" : "policy 찬란이",
+            title: lang === 'en' ? "Policy Chanlan" : "정책 찬란이",
             image: "/src/policy.png",
             description: lang === 'en' ? "Leave the policies to me!" : "정책은 나한테 맡겨! 정책 전문가 찬란이입니다!"
         },
         "culture": {
-            title: lang === 'en' ? "Culture Chanlan" : "culture 찬란이",
-            image: "/src/Culture.png",
+            title: lang === 'en' ? "Culture Chanlan" : "문화 찬란이",
+            image: "/src/culture.png",
             description: lang === 'en' ? "I’m specialized in culture and arts!" : "문화 예술 분야에 특화된 찬란이입니다!"
         },
         "communication": {
@@ -32,9 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
             image: "/src/communication.png",
             description: lang === 'en' ? "I excel in communication!" : "소통 전문가 찬란이입니다!"
         },
+        "welfare": {
+            title: lang === 'en' ? "Welfare Chanlan" : "복지 찬란이",
+            image: "/src/welfare.png",
+            description: lang === 'en' ? "Valuing welfare and equality." : "복지와 평등을 중요시하는 찬란이입니다."
+        },
+        "education": {
+            title: lang === 'en' ? "Education Chanlan" : "교육 찬란이",
+            image: "/src/education.png",
+            description: lang === 'en' ? "Got questions? Ask me! I love teaching more than anyone." : "모르는거? 나한테 물어봐! 누구보다 가르치는걸 좋아하는 찬란이 입니다."
+        },
         "employment": {
             title: lang === 'en' ? "Employment Chanlan" : "취업 찬란이",
-            image: "/src/Employment.png",
+            image: "/src/employment.png",
             description: lang === 'en' ? "I specialize in employment support!" : "교육 및 취업 지원에 특화된 찬란이입니다!"
         }
     };
