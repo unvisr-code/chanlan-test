@@ -55,7 +55,7 @@ const questions = [
         ]
     },
     {
-        "question": lang === 'en' ? "If you start a restaurant business, what will you prioritize?" : "당신이 요식업 창업을 시작한다면 무엇을 가장 중요하게 생각할 것인가?",
+        "question": lang === 'en' ? "If you start a restaurant business, what will you prioritize?" : "당신이 요식업 창업을\n 시작한다면 무엇을 가장 중요하게\n 생각할 것인가?",
         "options": [
             {"answer": lang === 'en' ? "Interior" : "인테리어", "weight": {"facilities": 5}},
             {"answer": lang === 'en' ? "Store manual" : "가게 메뉴얼", "weight": {"policy": 5}},
