@@ -7,64 +7,89 @@ const questions = [
     {
         "question": lang === 'en' ? "What is important to you when traveling with friends?" : "친구와 여행할 때 중요하게 생각하는 것은?",
         "options": [
-            {"answer": lang === 'en' ? "Pension" : "숙소", "weight": {"facilities": 1}},
+            {"answer": lang === 'en' ? "Accommodation" : "숙소", "weight": {"facilities": 1}},
             {"answer": lang === 'en' ? "Tourist spot ratings" : "관광지 평점", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "Activities (Food)" : "즐길거리(음식)", "weight": {"culture": 1}},
+            {"answer": lang === 'en' ? "Activities (Food)" : "즐길거리", "weight": {"culture": 1}},
             {"answer": lang === 'en' ? "Friends' opinions" : "친구 의견", "weight": {"communication": 1}},
-            {"answer": lang === 'en' ? "Safety" : "안전", "weight": {"employment": 1}}
+            {"answer": lang === 'en' ? "Safety" : "안전", "weight": {"education": 1}},
+            {"answer": lang === 'en' ? "Room service" : "룸서비스", "weight": {"welfare": 1}},
+            {"answer": lang === 'en' ? "Travel expenses" : "여행 경비", "weight": {"employment": 1}}
         ]
     },
     {
-        "question": lang === 'en' ? "If I could double major,\n I would choose...?" : "내가 복전 할 수 있다면 하고 싶은 전공은?",
+        "question": lang === 'en' ? "If I could double major, I would choose...?" : "내가 복전 할 수 있다면 하고 싶은 전공은?",
         "options": [
-            {"answer": lang === 'en' ? "Architecture" : "건축학과", "weight": {"facilities": 1}},
-            {"answer": lang === 'en' ? "Political Science" : "정치외교학과", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "Recreation" : "레크레이션학과", "weight": {"culture": 1}},
-            {"answer": lang === 'en' ? "Media Communication" : "미디어커뮤니케이션학", "weight": {"communication": 1}},
-            {"answer": lang === 'en' ? "Education" : "교육학과", "weight": {"education": 1}}
+            {"answer": lang === 'en' ? "Architecture" : "건축학과", "weight": {"facilities": 2}},
+            {"answer": lang === 'en' ? "Political Science" : "정치외교학과", "weight": {"policy": 2}},
+            {"answer": lang === 'en' ? "Recreation" : "레크레이션학과", "weight": {"culture": 2}},
+            {"answer": lang === 'en' ? "Media Communication" : "미디어커뮤니케이션학", "weight": {"communication": 2}},
+            {"answer": lang === 'en' ? "Education" : "교육학과", "weight": {"employment": 2, "education": 2}},
+            {"answer": lang === 'en' ? "Social Welfare" : "사회복지학과", "weight": {"welfare": 2}},
+            {"answer": lang === 'en' ? "Business Administration" : "경영학과", "weight": {"employment": 2}}
         ]
     },
     {
-        "question": lang === 'en' ? "Who would you prefer\n to date?" : "이 중 한 명과 연애해야 한다면?",
+        "question": lang === 'en' ? "Who would you prefer to date?" : "이 중 한 명과 연애해야 한다면?",
         "options": [
-            {"answer": lang === 'en' ? "A partner with a house" : "집 있는 애인", "weight": {"facilities": 1}},
-            {"answer": lang === 'en' ? "A partner who plans dates" : "데이트 코스 짜오는 연인", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "A partner with similar interests" : "관심사가 잘 맞는 애인", "weight": {"culture": 1}},
-            {"answer": lang === 'en' ? "Good communicator" : "대화가 잘 통하는 애인", "weight": {"communication": 1}},
-            {"answer": lang === 'en' ? "An employed partner" : "취업한 애인", "weight": {"employment": 1}}
+            {"answer": lang === 'en' ? "Partner with a house" : "집 있는 애인", "weight": {"facilities": 3}},
+            {"answer": lang === 'en' ? "Partner who plans dates" : "데이트 코스 짜오는 연인", "weight": {"policy": 3}},
+            {"answer": lang === 'en' ? "Partner with similar interests" : "관심사가 잘 맞는 애인", "weight": {"culture": 3}},
+            {"answer": lang === 'en' ? "Good communicator" : "대화가 잘 통하는 애인", "weight": {"communication": 3}},
+            {"answer": lang === 'en' ? "Partner who is a role model" : "솔선수범 할 줄 아는 사람", "weight": {"welfare": 3}},
+            {"answer": lang === 'en' ? "Partner with something to learn from" : "배울점 있는 애인", "weight": {"education": 3}},
+            {"answer": lang === 'en' ? "Employed partner" : "취업한 애인", "weight": {"employment": 3}}
         ]
     },
     {
         "question": lang === 'en' ? "If you could be friends with someone, who would it be?" : "이중 한 명과 친해질 수 있다면?",
         "options": [
-            {"answer": lang === 'en' ? "Construction worker" : "건설공", "weight": {"facilities": 1}},
-            {"answer": lang === 'en' ? "Politician" : "정치인", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "Festival MC" : "축제 MC", "weight": {"culture": 1}},
-            {"answer": lang === 'en' ? "Volunteer" : "사회봉사자", "weight": {"welfare": 1}},
-            {"answer": lang === 'en' ? "Teacher" : "교사", "weight": {"education": 1}}
+            {"answer": lang === 'en' ? "Construction worker" : "건설공", "weight": {"facilities": 4}},
+            {"answer": lang === 'en' ? "Politician" : "정치인", "weight": {"policy": 4}},
+            {"answer": lang === 'en' ? "Festival MC" : "축제 MC", "weight": {"culture": 4}},
+            {"answer": lang === 'en' ? "Psychological counselor" : "심리상담사", "weight": {"communication": 4}},
+            {"answer": lang === 'en' ? "Volunteer" : "사회봉사자", "weight": {"welfare": 4}},
+            {"answer": lang === 'en' ? "Teacher" : "교사", "weight": {"education": 4}},
+            {"answer": lang === 'en' ? "Samsung interviewer" : "삼성 면접관", "weight": {"employment": 4}}
         ]
     },
     {
         "question": lang === 'en' ? "What do you hope will be realized in school life?" : "학교 생활 하면서 실현 됐으면 좋겠는 것은?",
         "options": [
-            {"answer": lang === 'en' ? "Underground campus" : "지하 캠퍼스", "weight": {"facilities": 1}},
-            {"answer": lang === 'en' ? "Complete course registration" : "4년간 수강신청 올클", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "Lawn at Sejong University" : "잔디밭 세종대", "weight": {"culture": 1}},
-            {"answer": lang === 'en' ? "100 friends" : "친구 100명", "weight": {"communication": 1}},
-            {"answer": lang === 'en' ? "Bestie with my professor" : "전공교수님과 베프", "weight": {"education": 1}}
+            {"answer": lang === 'en' ? "Underground campus" : "지하 캠퍼스", "weight": {"facilities": 5}},
+            {"answer": lang === 'en' ? "Complete course registration" : "4년간 수강신청 올클", "weight": {"policy": 5}},
+            {"answer": lang === 'en' ? "Lawn at Sejong University" : "잔디밭 세종대", "weight": {"culture": 5}},
+            {"answer": lang === 'en' ? "100 friends" : "친구 100명", "weight": {"communication": 5}},
+            {"answer": lang === 'en' ? "Clean restrooms" : "깨끗한 화장실", "weight": {"welfare": 5}},
+            {"answer": lang === 'en' ? "Bestie with my professor" : "전공교수님과 베프", "weight": {"education": 5}},
+            {"answer": lang === 'en' ? "Expanded job center" : "일자리 센터 확대", "weight": {"employment": 5}}
         ]
     },
     {
         "question": lang === 'en' ? "If you start a restaurant business, what will you prioritize?" : "당신이 요식업 창업을 시작한다면 무엇을 가장 중요하게 생각할 것인가?",
         "options": [
-            {"answer": lang === 'en' ? "Interior" : "인테리어", "weight": {"facilities": 1}},
-            {"answer": lang === 'en' ? "Store manual" : "가게 메뉴얼", "weight": {"policy": 1}},
-            {"answer": lang === 'en' ? "Menu preferences of people" : "사람들의 메뉴 선호도", "weight": {"culture": 1}},
-            {"answer": lang === 'en' ? "Store's social media" : "가게 SNS", "weight": {"communication": 1}},
-            {"answer": lang === 'en' ? "Hiring part-timers" : "알바생 뽑기", "weight": {"employment": 1}}
+            {"answer": lang === 'en' ? "Interior" : "인테리어", "weight": {"facilities": 6}},
+            {"answer": lang === 'en' ? "Store manual" : "가게 메뉴얼", "weight": {"policy": 6}},
+            {"answer": lang === 'en' ? "Menu preferences of people" : "사람들의 메뉴 선호도", "weight": {"culture": 6}},
+            {"answer": lang === 'en' ? "Store's social media" : "가게 SNS", "weight": {"communication": 6}},
+            {"answer": lang === 'en' ? "Meal allowances for staff" : "직원 식대", "weight": {"welfare": 6}},
+            {"answer": lang === 'en' ? "Training part-timers" : "알바생 교육", "weight": {"education": 6}},
+            {"answer": lang === 'en' ? "Interviewing part-timers" : "알바생 면접", "weight": {"employment": 6}}
+        ]
+    },
+    {
+        "question": lang === 'en' ? "In a team project, which role would you like to take?" : "팀플 할 때 내가 맞고 싶은 역할은?",
+        "options": [
+            {"answer": lang === 'en' ? "Venue reservation" : "장소 대여", "weight": {"facilities": 7}},
+            {"answer": lang === 'en' ? "Schedule planning" : "일정 계획", "weight": {"policy": 7}},
+            {"answer": lang === 'en' ? "Making PPT" : "ppt 제작", "weight": {"culture": 7}},
+            {"answer": lang === 'en' ? "Presenting" : "발표", "weight": {"communication": 7}},
+            {"answer": lang === 'en' ? "Ice-breaking and setting the mood" : "아이스브레이킹-분위기 유도", "weight": {"welfare": 7}},
+            {"answer": lang === 'en' ? "Collecting data" : "자료 수집", "weight": {"education": 7}},
+            {"answer": lang === 'en' ? "Interviewing professor" : "교수님 인터뷰", "weight": {"employment": 7}}
         ]
     }
 ];
+
 
 // 질문 순서 섞기
 shuffle(questions);
