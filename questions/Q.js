@@ -166,7 +166,7 @@ function determineCategory() {
     popup.className = "popup";
     popup.innerHTML = `
         <div class="popup-content">
-            <p>${lang === 'en' ? "Finding the best Pledge for you..." : "나에게 맞는 공약을 찾는중이에요!"}</p>
+            <p>${lang === 'en' ? "Finding the best Pledge for you..." : "나에게 맞는<br> 공약을 찾는중이에요!"}</p>
             <div class="loading-images"></div>
         </div>
     `;
