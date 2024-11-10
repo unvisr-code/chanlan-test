@@ -224,7 +224,7 @@ body::before {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     text-align: center;
-    color: white;
+    color: black;
     transition: transform 0.3s ease-in-out;
     transform: translateY(100%); /* 숨김 상태 */
     overflow-y: auto;

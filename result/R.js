@@ -72,6 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
     optionButton.addEventListener("click", () => {
         window.location.href = "/all_mascots/All.html";
     });
+
+    // 바텀시트 텍스트 설정
+    bottomSheetText.textContent = lang === 'en' ? "Coming soon!" : "준비중이에요!";
+
 });
 
 // 슬라이더 잠금 해제 기능 및 터치/드래그 설정
