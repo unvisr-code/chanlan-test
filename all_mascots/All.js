@@ -50,7 +50,7 @@ const mascotInfo = {
             en: "Valuing welfare and equality."
         }
     },
-    "facilities": {
+    "facility": {
         title: {
             ko: "시설 찬란이",
             en: "Facilities Chanlan"
